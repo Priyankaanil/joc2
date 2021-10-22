@@ -1,0 +1,88 @@
+Question 1:
+Sanvi is a very naughty kid. She can recognize numbers from 0 to 9. Her mother has to submit
+a report to her team leader in next one hour. To engage the naughty Sanvi, she gives her 8 
+balloons which has numbered printed on it. Sanvi is asked to put the balloons in a box, in such 
+a way that the box shouldn’t contain duplicate balloons with respect to numbers printed on it. 
+Help baby Sanvi to finish the task soon and start her mischiefs.
+
+#include<stdio.h>
+#include<stdlib.h>
+int main(){
+   int i,j,k,n,arr[50];
+   printf("Enter size of the array\n");
+   scanf("%d",&n);
+   printf("Enter elements of the array:\n");
+   for(i=0;i<n;i++)
+   {
+      scanf("%d",&arr[i]);
+   }
+   printf("Entered elements are: \n");
+   for(i=0;i<n;i++)
+   {
+      printf("%d ",arr[i]);
+   }
+   for(i=0;i<n;i++)
+   {
+      for(j = i+1; j < n; j++)
+      {
+         if(arr[i] == arr[j])
+         {
+            for(k = j; k <n; k++)
+            {
+               arr[k] = arr[k+1];
+            }
+            j--;
+            n--;
+         }
+      }
+   }
+   printf("the array after deleting the duplicate elements is:\n");
+   for(i=0;i<n;i++)
+   {
+      printf("%d ",arr[i]);
+   }
+}
+
+
+
+Question 2:
+Given an array of integers, and another integer K. Write a program to find indexes of two
+elements in an array which sum is equal to K.
+
+
+#include<stdio.h>
+int main()
+{
+ int a[50],n,sum,i,x;
+ printf("enter the value for n:\n");
+ scanf("%d",&n);
+ printf("enter the value for sum\n");
+ scanf("%d",&sum);
+ printf("enter the elements into the array:\n");
+ for(i=0;i<n;i++)
+ {
+    scanf("%d",&a[i]);
+ }
+ printf("the entered elements are:\n");
+ for(i=0;i<n;i++)
+ {
+ printf("%d\n",a[i]);
+ }
+ n = sizeof(a)/sizeof(a[0]);
+ findindex(a,x,sum);
+ return 0;
+}
+void findindex(int a[], int x, int sum)
+{
+    for (int i = 0; i < x - 1; i++)
+    {
+        for (int j = i + 1; j < x; j++)
+        {
+            if (a[i] + a[j] == sum)
+            {
+                printf("Pair found at (%d, %d)\n", a[i], a[j]);
+                return;
+            }
+        }
+    }
+}
